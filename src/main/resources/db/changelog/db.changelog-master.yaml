@@ -1,0 +1,61 @@
+databaseChangeLog:
+    - preConditions:
+      - runningAs:
+         username: sa
+    - changeSet:
+        id: 1
+        author: vusatchy
+        changes:
+            - createTable:
+                tableName: book
+                columns:
+                    - column:
+                        name: id
+                        type: varchar(255)
+                        constraints:
+                            primaryKey: true
+                            nullable: false
+                    - column:
+                        name: title
+                        type: varchar(255)
+                        constraints:
+                            nullable: false
+                    - column:
+                        name: author
+                        type: varchar(255)
+                        constraints:
+                            nullable: false
+                    - column:
+                        name: year
+                        type: int
+                        constraints:
+                            nullable: false
+                    - column:
+                        name: publisher
+                        type: varchar(255)
+                        constraints:
+                            nullable: false
+                    - column:
+                        name: small
+                        type: varchar(255)
+                        constraints:
+                            nullable: false
+                    - column:
+                        name: midle
+                        type: varchar(255)
+                        constraints:
+                            nullable: false
+                    - column:
+                        name: large
+                        type: varchar(255)
+                        constraints:
+                            nullable: false
+
+    - changeSet:
+        id: 2
+        author: vusatchy
+        changes:
+            - loadData:
+                tableName: book
+                file: db/changelog/books.csv
+                separator: ';'
