@@ -52,6 +52,17 @@
        .nav-tabs, .nav-pills {
            text-align:center;
        }
+       .col-item .price-details h1 {
+         width : 250px;
+         overflow:hidden;
+         display:inline-block;
+         text-overflow: ellipsis;
+         white-space: nowrap;
+         font-size: 14px;
+         line-height: 20px;
+         margin: 0;
+         float:left;
+       }
     </style>
 <!------ Include the above in your HEAD tag ---------->
 
