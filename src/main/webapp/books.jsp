@@ -71,7 +71,7 @@
         			</div>
         			<div class="separator clear-left">
         				<p class="btn-add">
-        					<i class="fa fa-shopping-cart"></i><a href="${contextPath}/product?id=${product.id}" class="hidden-sm">Buy</a>
+        					<a href="${contextPath}/books?id=${book.id}" class="hidden-sm">Look at it</a>
         				</p>
         			</div>
         			<div class="clearfix"></div>
