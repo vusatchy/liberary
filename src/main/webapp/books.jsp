@@ -71,7 +71,7 @@
         			</div>
         			<div class="separator clear-left">
         				<p class="btn-add">
-        					<a href="${contextPath}/books?id=${book.id}" class="hidden-sm">Look at it</a>
+        				<a href="${contextPath}/books?id=${book.id}" class="hidden-sm">Look at it</a>
         				</p>
         			</div>
         			<div class="clearfix"></div>
