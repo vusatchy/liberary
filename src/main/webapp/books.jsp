@@ -16,6 +16,7 @@
 
 
     <link href="${contextPath}/css/product.css" rel="stylesheet">
+    <link href="product.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -71,7 +72,7 @@
         			</div>
         			<div class="separator clear-left">
         				<p class="btn-add">
-        				<a href="${contextPath}/books?id=${book.id}" class="hidden-sm">Look at it</a>
+        				 <a href="${contextPath}/books?id=${book.id}" class="hidden-sm">Look at it</a>
         				</p>
         			</div>
         			<div class="clearfix"></div>
