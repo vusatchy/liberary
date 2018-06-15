@@ -3,7 +3,6 @@ package com.books.liberary.controller;
 
 import com.books.liberary.model.Book;
 import com.books.liberary.service.BooksPagedService;
-import com.books.liberary.service.TitleValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -17,13 +16,10 @@ public class BookController {
     @Autowired
     private BooksPagedService booksPagedService;
 
-    @Autowired
-    private TitleValidationService titleValidationService;
-
     @GetMapping(value = "/books/{page}")
     public String products(@PathVariable Integer page, Model model) {
         Page<Book> books = booksPagedService.getBooks(page);
-        model.addAttribute("books", titleValidationService.validateNamesAndAuthors(books.getContent()));
+        model.addAttribute("books", books.getContent());
         if (books.hasNext()) {
             model.addAttribute("next", String.valueOf(books.nextPageable().getPageNumber() + 1));
         } else {

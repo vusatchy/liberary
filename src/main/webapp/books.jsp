@@ -66,7 +66,7 @@
         			<div class="row">
         				<div class="price-details col-md-6">
         					<h1>${book.title}</h1>
-        					<span class="price-new">${book.author}</span>
+        					<span class="price-new"><br>${book.author}</span>
         				</div>
         			</div>
         			<div class="separator clear-left">
