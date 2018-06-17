@@ -51,50 +51,23 @@
     </div>
 
 <body>
-<div class="container">
-    <div class="row">
-		<div class="well">
-        <h1 class="text-center">Products you bought</h1>
-        <div class="list-group">
-
-          <c:forEach items="${purchases}" var="purchase">
-          <a href="#" class="list-group-item">
-                <div class="media col-md-3">
-                    <figure class="pull-left">
-                        <img src="images/${purchase.product.picturePath}.jpg" height="200" width="200"  alt="placehold.it/350x250" >
-                    </figure>
-                </div>
-                <div class="col-md-6">
-
-                    <h2 class="list-group-item-text">
-                            ${purchase.product.name}
-                    </h2>
-                </div>
-                <div class="col-md-3 text-center">
-                    <h2> ${purchase.product.price} <small> dollars </small></h2>
-                    <p>  ${purchase.time} </p>
-                </div>
-        </a>
+     <div class="container">
+          	<table class="table">
+                <thead>
+                  <tr>
+                    <th>author</th>
+                    <th>title count</th>
+                  </tr>
+                </thead>
+                <tbody>
+          <c:forEach items="${authors}" var="author">
+                  <tr class="active">
+                    <td><a href="${contextPath}/books?author=${author.name}">${author.name}</a></td>
+                    <td>${author.count}</td>
+                  </tr>
 	    </c:forEach>
-	         <a href="#" class="list-group-item">
-                        <div class="media col-md-3">
-                        <figure class="pull-left">
-                            <img src="images/white.jpg" height="200" width="200"  alt="placehold.it/350x250" >
-                        </figure>
-                        </div>
-                        <div class="col-md-6">
-
-                        <h2 class="list-group-item-text">
-                            Total sum of all bought products
-                        </h2>
-                        </div>
-                        <div class="col-md-3 text-center">
-                             <h2> ${sum} <small> dollars </small></h2>
-                        </div>
-              </a>
-        </div>
-        </div>
-	</div>
+      </tbody>
+    </table>
 </div>
 </body>
 </html>

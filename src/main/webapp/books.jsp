@@ -29,14 +29,87 @@
 
         <div class="collapse navbar-collapse navHeaderCollapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="${contextPath}/purchase">Your purchases</a></li>
+            <li><a href="${contextPath}/authors">Authors</a></li>
             <li><a href="${contextPath}/logout">Log out</a></li>
           </ul>
         </div>
       </div>
     </div>
 
+<style>
+  #custom-search-form {
+        margin:0;
+        margin-top: 5px;
+        padding: 0;
+    }
+
+    #custom-search-form .search-query {
+        padding-right: 3px;
+        padding-right: 4px \9;
+        padding-left: 3px;
+        padding-left: 4px \9;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        -webkit-transition: width  0.2s ease-in-out;
+    -moz-transition:width  0.2s ease-in-out;
+    -o-transition: width  0.2s ease-in-out;
+    transition: width  0.2s ease-in-out;
+    }
+
+    #custom-search-form button {
+        border: 0;
+        background: none;
+        /** belows styles are working good */
+        padding: 2px 5px;
+        margin-top: 2px;
+        position: relative;
+        left: -28px;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+
+    .search-query:focus + button {
+        z-index: 3;
+    }
+    .search-query:focus{
+        width: 260px;
+    }
+
+    col-item .price-details h1 {
+             width : 250px;
+             overflow:hidden;
+             display:inline-block;
+             text-overflow: ellipsis;
+             white-space: nowrap;
+             font-size: 14px;
+             line-height: 20px;
+             margin: 0;
+             float:left;
+           }
+
+</style>
+<div class="container">
+	<div class="row">
+        <div class="span12">
+            <form id="custom-search-form" class="form-search form-horizontal pull-right">
+                <
+                div class="input-append span12">
+                    <input type="text" name="title" class="search-query mac-style" placeholder="Search">
+                    <button type="submit" action="${contextPath}/books?page=${current}" class="btn"><i class="icon-search"></i></button>
+                </div>
+            </form>
+        </div>
+	</div>
+</div>
 <body>
+
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -71,7 +144,7 @@
         			</div>
         			<div class="separator clear-left">
         				<p class="btn-add">
-        					<a href="${contextPath}/books?id=${book.id}" class="hidden-sm">Look at it</a>
+        					<a href="${contextPath}/book/${book.id}" class="hidden-sm">Look at it</a>
         				</p>
         			</div>
         			<div class="clearfix"></div>
@@ -86,16 +159,26 @@
 <ul class="pagination  pagination-lg">
         <%
                    String prev = (String)request.getAttribute("prev");
+                   String titlePartPrev = "";
+                   if(request.getAttribute("title") != null){
+                      String titlePrev = (String)request.getAttribute("title");
+                      titlePartPrev = "&title=" + titlePrev;
+                   }
                    if(prev != null){
-                   out.println( "<li><a href=\"/books/" +  prev +"\">" + prev +"</a></li>");
+                   out.println( "<li><a href=\"/books?page=" +  prev + titlePartPrev +"\">" + prev +"</a></li>");
                    }
         %>
-     <li class="active"><a href="${contextPath}/books/${current}">${current}<span class="sr-only">(current)</span></a></li>
+     <li class="active"><a href="${contextPath}/books?page=${current}">${current}<span class="sr-only">(current)</span></a></li>
 
          <%
                               String next = (String)request.getAttribute("next");
+                              String titlePart = "";
+                              if(request.getAttribute("title") != null){
+                                String title = (String)request.getAttribute("title");
+                                titlePart = "&title=" + title;
+                              }
                               if(next != null){
-                              out.println( "<li><a href=\"/books/" +  next +"\">" + next +"</a></li>");
+                              out.println( "<li><a href=\"/books?page=" +  next + titlePart + "\">" + next +"</a></li>");
                               }
           %>
             </ul>
