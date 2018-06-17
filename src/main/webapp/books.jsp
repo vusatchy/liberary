@@ -91,7 +91,7 @@
              font-size: 14px;
              line-height: 20px;
              margin: 0;
-             float:left;
+                float:left;
            }
 
 </style>
@@ -99,8 +99,7 @@
 	<div class="row">
         <div class="span12">
             <form id="custom-search-form" class="form-search form-horizontal pull-right">
-                <
-                div class="input-append span12">
+                <div class="input-append span12">
                     <input type="text" name="title" class="search-query mac-style" placeholder="Search">
                     <button type="submit" action="${contextPath}/books?page=${current}" class="btn"><i class="icon-search"></i></button>
                 </div>
