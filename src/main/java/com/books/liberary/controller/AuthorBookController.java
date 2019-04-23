@@ -8,14 +8,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class AuthorBookController {
 
     @Autowired
     private AuthorBookService authorBookService;
 
-    @GetMapping(value = "/authors")
+   /* @GetMapping(value = "/authors")
     private String authorBooks(@RequestParam(name = "page", defaultValue = "1") Integer page, Model model) {
         Page<AuthorBook> data = authorBookService.getBooks(page);
         model.addAttribute("authors", data.getContent());
@@ -32,7 +33,7 @@ public class AuthorBookController {
         }
         model.addAttribute("current", String.valueOf(page));
         return "authors";
-    }
+    }*/
 
 
 }
