@@ -1,3 +1,5 @@
+import { first } from 'rxjs/operators';
+
 export interface IBook {
     id: number;
     title: string;
@@ -7,4 +9,13 @@ export interface IBook {
     small: string;
     midle: string;
     large: string;
+}
+
+export interface IPageData {
+    q: string;
+    current: number;
+    next: number;
+    prev: number;
+    last: boolean;
+    first: boolean;
 }

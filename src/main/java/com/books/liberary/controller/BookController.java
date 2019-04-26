@@ -5,30 +5,26 @@ import com.books.liberary.model.Book;
 import com.books.liberary.service.BooksPagedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 public class BookController {
+
+    private final static String ALL   = "*";
 
     @Autowired
     private BooksPagedService booksPagedService;
 
     @GetMapping(value = "/books")
-    public Iterable<Book> books(@RequestParam(name = "page", defaultValue = "1") Integer page, @RequestParam(name = "author", required = false)
-                                                String author, @RequestParam(name = "title", required = false) String title) {
+    public Iterable<Book> books(
+        @RequestParam(name = "page", defaultValue = "1") Integer page,
+        @RequestParam(name = "q", required = false) String q) {
         Page<Book> books;
-        if (author != null){
-            books = booksPagedService.getBooksByAuthor(page,author);
-        }
-        else if (title != null) {
-            books = booksPagedService.getBooksByTitle(page, title);
+        if (q != null && !ALL.equals(q)) {
+            books = booksPagedService.getBooks(page, q);
         } else {
             books = booksPagedService.getBooks(page);
         }
@@ -36,7 +32,9 @@ public class BookController {
     }
 
     @GetMapping(value = "/book/{id}")
-    public Book book(@PathVariable Integer id) {
+    public Book book(
+        @PathVariable
+            Integer id) {
         Book book = booksPagedService.getBook(id).get();
         return book;
     }

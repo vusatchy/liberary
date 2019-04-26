@@ -9,13 +9,22 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class DataService {
-
+ 
     baseUrl: string = 'http://localhost:8090/';
     
     constructor(private http: HttpClient) { }
 
-    getBooks() : Observable<any[]> {
-        return this.http.get<any[]>(this.baseUrl + 'books')
+    getBooks(q: string, page: number) : Observable<any[]> {
+        let url = this.baseUrl + 'books?page=' + page;
+        if(q) {
+            url += '&q=' + q;
+        } 
+        return this.http.get<any[]>(url)
+            .pipe(catchError(this.handleError));
+    }
+
+    getBook(id: number) : Observable<IBook> {
+        return this.http.get<IBook>(this.baseUrl + 'book/' + id)
             .pipe(
                 catchError(this.handleError)
             );
