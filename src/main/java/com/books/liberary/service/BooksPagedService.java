@@ -15,6 +15,7 @@ public class BooksPagedService {
 
     private static final String SORT_FIELD = "year";
     private static final int PAGE_SIZE = 28;
+
     @Autowired
     private BookRepository bookRepository;
 

@@ -7,6 +7,8 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { BooksModule } from './books/book.module';
 import { BooksPageModule } from './book-page/book-page.module';
+import { LoginModule } from './login/login.module';
+import { RegistrationModule } from './registration/registration.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { BooksPageModule } from './book-page/book-page.module';
     SharedModule,
     CoreModule,
     BooksModule,
-    BooksPageModule
+    BooksPageModule,
+    LoginModule,
+    RegistrationModule
   ],
   bootstrap: [AppComponent]
 })

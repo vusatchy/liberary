@@ -11,7 +11,6 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
     @Query(value = "select new com.books.liberary.model.AuthorBook(b.author, count(b.title)) from Book b group by b.author")
     Page<?> findAuthorCount(Pageable pageRequest);
 
-    //findByFirstnameAndLastnameAllIgnoringCase
     Page<Book> findByAuthorContainingIgnoreCaseOrTitleContainingIgnoreCase(String author, String title,
                                                                            Pageable pageRequest);
 

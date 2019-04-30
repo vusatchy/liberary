@@ -59,3 +59,46 @@ databaseChangeLog:
                 tableName: book
                 file: db/changelog/books.csv
                 separator: ';'
+
+    - changeSet:
+            id: 3
+            author: vusatchy
+            changes:
+                - createTable:
+                    tableName: user
+                    columns:
+                        - column:
+                            name: id
+                            type: varchar(255)
+                            constraints:
+                                primaryKey: true
+                                nullable: false
+                        - column:
+                            name: name
+                            type: varchar(255)
+                            constraints:
+                                nullable: false
+                        - column:
+                            name: role
+                            type: varchar(255)
+                            constraints:
+                                nullable: false
+                        - column:
+                            name: mail
+                            type: varchar(255)
+                            constraints:
+                                nullable: false
+                        - column:
+                            name: password
+                            type: varchar(255)
+                            constraints:
+                                nullable: false
+
+    - changeSet:
+            id: 4
+            author: vusatchy
+            changes:
+                - loadData:
+                    tableName: user
+                    file: db/changelog/users.csv
+                    separator: ';'
