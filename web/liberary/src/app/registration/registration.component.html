@@ -1,16 +1,13 @@
 <div class="container">
     <form method="POST" action="" class="form-signin">
-       <div class="form-group">
-                <span>{{ message }} </span>
+       <div class="form-group"><span> {{ message }} </span>
         <h2 class="form-signin-heading">Create your account</h2>
         <span>{{ message }}</span>
-        <input name="login" type="text" class="form-control" placeholder="Login"
-                           autofocus="true"/>
-        <input name="email" type="text" class="form-control" placeholder="E-mail"
-                                   autofocus="true"/>
-        <input name="password" type="password" class="form-control" placeholder="Password"/>
+        <input [(ngModel)]="login" name="login" type="text" class="form-control" placeholder="Login" autofocus="true"/>
+        <input [(ngModel)]="email" name="email" type="text" class="form-control" placeholder="E-mail" autofocus="true"/>
+        <input [(ngModel)]="password" name="password" type="password" class="form-control" placeholder="Password"/>
         <span>{{ error }}</span>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="onClick()">Submit</button>
         <h4 class="text-center"><a [routerLink]="['/login']">Already registered</a></h4>
         </div>
     </form>

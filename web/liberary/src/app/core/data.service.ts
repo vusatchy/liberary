@@ -24,7 +24,7 @@ export class DataService {
         const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(this.session.get("login") + ":" + this.session.get("password"))});
         return this.http.get<any[]>(url, {headers})
             .pipe(catchError((error: HttpErrorResponse) => {
-                return this.handleError(error, this.router) ;
+                return this.handleError(error, this.router, this.session) ;
             }));
     }
 
@@ -32,15 +32,17 @@ export class DataService {
         const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(this.session.get("login") + ":" + this.session.get("password"))});
         return this.http.get<IBook>(this.baseUrl + 'book/' + id, {headers})
         .pipe(catchError((error: HttpErrorResponse) => {
-            return this.handleError(error, this.router) ;
+            return this.handleError(error, this.router, this.session) ;
         }));
     }
 
-    handleError(error: any, router: Router) {
+    handleError(error: any, router: Router, session: SessionStorageService) {
       console.error('server error:', error);
       if (error.status == 401) {
-          console.log(router);
-          router.navigate(['/login']);
+          var params = {};
+          params["error"] = session.get("login") ? true : false;
+          console.log(params);
+          router.navigate(['/login'], { queryParams: params });
       }
       else if (error.error instanceof Error) {
           const errMessage = error.error.message;

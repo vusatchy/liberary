@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionStorageService } from 'angular-web-storage';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -9,8 +11,15 @@ import { Component, OnInit } from '@angular/core';
 export class RegistrationComponent implements OnInit {
 
 
+    
+    constructor(public session: SessionStorageService, private router: Router, private route: ActivatedRoute){}
+
     ngOnInit(): void {
 
+    }
+
+    onClick() {
+        
     }
 
 }
