@@ -1,0 +1,7 @@
+<div class="text-center">
+    <ul class="pagination  pagination-lg">
+        <li [ngStyle]="first && {'display': 'none'}"><a [routerLink]="['/books']" [queryParams]="_queryPrev" > {{ prev }} </a></li>
+        <li class="active"><a> {{ current }} <span class="sr-only">(current)</span></a></li>
+        <li [ngStyle]="last && {'display': 'none'}"><a [routerLink]="['/books']" [queryParams]="_queryNext" > {{ next }} </a></li>
+    </ul>
+</div>
