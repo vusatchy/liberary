@@ -28,7 +28,7 @@ public class UserController {
         return userService.saveUser(user.name, user.email, user.password);
     }
 
-    class SimpleUser {
+    static class SimpleUser {
 
         private String name;
 
@@ -40,6 +40,10 @@ public class UserController {
             this.name = name;
             this.email = email;
             this.password = password;
+        }
+
+        public SimpleUser(){
+
         }
 
         public String getName() {
